@@ -32,7 +32,7 @@ app.post('/auth/login', loginValidation, handleValidationErrors, UserController.
 app.get('/auth/me', checkAuth, UserController.getMe);
 
 app.post('/todolist', checkAuth, TodoListController.create);
-app.get('/todolist/:id', TodoListController.getOne);
+app.get('/todolist/:id', checkAuth, TodoListController.getOne);
 app.get('/todolist', checkAuth, TodoListController.getAll);
 app.delete('/todolist/:id', checkAuth, TodoListController.remove);
 app.patch('/todolist/:id',  TodoListController.update);

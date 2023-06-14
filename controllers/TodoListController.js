@@ -32,6 +32,9 @@ export const getOne = async(req, res) => {
         const todoListId = req.params.id;
 
         await TodoListModel.findById(todoListId)
+        .where('haveAccess').
+        in([req.userId])
+        .populate('haveAccess')
         .then(
             todoList => {
                 if(!todoList){
@@ -60,16 +63,13 @@ export const getOne = async(req, res) => {
 
 export const getAll = async(req, res) => {
     try{
-
-
-        //console.log(req.userId);
+        console.log(req.userId);
         const todoLists = await TodoListModel.find()
         .where('haveAccess').
         in([req.userId])
         .populate('haveAccess')
         .exec();
 
-        console.log(todoLists);
         res.json(todoLists);
 
     } catch(err){
