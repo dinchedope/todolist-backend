@@ -35,7 +35,7 @@ app.post('/todolist', checkAuth, TodoListController.create);
 app.get('/todolist/:id', checkAuth, TodoListController.getOne);
 app.get('/todolist', checkAuth, TodoListController.getAll);
 app.delete('/todolist/:id', checkAuth, TodoListController.remove);
-app.patch('/todolist/:id',  TodoListController.update);
+app.patch('/todolist/:id', checkAuth, TodoListController.update);
 
 app.listen(PORT, (err) => {
     if(err){

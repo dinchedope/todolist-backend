@@ -113,8 +113,8 @@ export const remove = async(req, res) => {
 
 export const update = async(req, res) => {
     try{
-        console.log(req);
         //console.log(req);
+        console.log(req.body);
         const todoListId = req.params.id;
         
         await TodoListModel.updateOne({
