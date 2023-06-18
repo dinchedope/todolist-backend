@@ -2,6 +2,8 @@ import express from 'express'
 import mongoose from 'mongoose';
 import cors from 'cors';
 
+import db_connection_string from './config.js';
+
 import UserModel from './models/User.js';
 import { registerValidation, loginValidation } from './validations/validations.js';
 
@@ -15,7 +17,7 @@ import { check } from 'express-validator';
 const PORT = process.env.PORT ?? 4000;
 
 mongoose
-    .connect('mongodb+srv://dinchedope:rfvujm000@cluster0.sh8xriu.mongodb.net/blog?retryWrites=true&w=majority',)
+    .connect(db_connection_string,)
     .then(() => {console.log('DB OK')})
     .catch((err) => console.log('DB error', err));
 
